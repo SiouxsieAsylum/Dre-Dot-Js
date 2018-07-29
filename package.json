@@ -1,0 +1,15 @@
+{
+  "name": "dredotjs",
+  "version": "1.0.0",
+  "description": "o900 m",
+  "main": "index.js",
+  "dependencies": {
+    "create-react-app": "^1.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrea McKenzie",
+  "license": "ISC"
+}
