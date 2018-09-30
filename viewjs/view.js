@@ -1,74 +1,115 @@
 document.addEventListener('DOMContentLoaded', function (dom) {
+
 	const div = document.getElementById('test');
 	const body = document.querySelector('body');
+	const split = document.getElementById('split-screen');
 
-	let baseCaseX;
-	let baseCaseY;
-	let hitBoxRight;
-	let hitBoxLeft;
+	const height = window.innerHeight;
+	let scrollY = window.scrollY;
+
+	const firstHeight = 900;
+	const secondHeight = 1800;
+	const thirdHeight = 2700;
+	const fourthHeight = 3600;
+	const fifthHeight = 4500;
+
+	//colors 	
+	let r = 242;
+	let g = 243; 
+	let b = 255;
+	let a = 1;
+
+	let color = `rgba(${r}, ${g}, ${b}, ${a}`;
+	div.style.backgroundColor = color;
+
+	//containers
+	let secondContainer = secondHeight - firstHeight;
+	let thirdContainer = thirdHeight - secondHeight;
+
+
 
 	document.addEventListener('mouseenter', function(me){
-		baseCaseX = baseCaseX || me.clientX;
-		baseCaseY = baseCaseY || me.clientY;
-		hitBoxRight = innerWidth - baseCaseX;
-		hitBoxLeft = innerWidth - hitBoxRight;
-		console.log(baseCaseX, baseCaseY, hitBoxRight, hitBoxLeft);
-
 	})
 
-	document.addEventListener('mousemove', function (mm) {
-			//only works while mouse is within browser window;
-			const width = window.innerWidth;
-			
-			let clientX = mm.clientX;
-			//let clientY = mm.clientY;
-
-			let deviationX = clientX - baseCaseX;
-			//let deviationY = clientY - baseCaseY; 
-
-			// users will instantiate a base case on load
-			// this will establish two hit boxes, a right and a left
-			// you want to establish which direction will e the desired direction
-			// then, set the box on the left to grow from one side to the other in the desired direction at the speed in which your mouse traverses the desired direction hit box
-			// if crossing direction continue growing
-
-			console.log(a, 'width', w);
-
-			div.style.width = w + 'px';
-			//div.style.color = `rgba(0,0,0,${a})`; 
 
 
 			window.addEventListener('scroll', function(s) {
+				scrollY = window.scrollY;
+				let w;
 
-			let scrollY = window.scrollY;
+				if (scrollY < firstHeight) {
+					let firstContainerScroll = scrollY;
+					let firstPercentage = firstContainerScroll / firstHeight; 
 
-			//colors 	
-			let r = 0;
-			let g = 0; 
-			let b = 0;
-			let a = 1;
+					w = 100 * firstPercentage;
+					div.style.width = w + 'vw';
+				}
 
-			//sizes
-			let h = 100;
-			let w = 100;
-
-			//positions
-			let x = 10;
-			let y = 10;
-
-			r = scrollY / 2;
-			g = scrollY / 2;
-			b = scrollY / 2;
-			a = scrollY / 578;
+				if (scrollY > firstHeight) {
+					let secondScrollHeight = scrollY - firstHeight;
+					let secondPercentage = secondScrollHeight / secondHeight;
+					
+					//what percent ahead of first height are we of 
+					r = setColorValue(secondPercentage, r, 242, 10); //10
+					g = setColorValue(secondPercentage, g, 243, 18); //18
+					b = setColorValue(secondPercentage, b, 255, 71); // 71;
+					color = `rgba(${r}, ${g}, ${b}, ${a}`;
 
 
-		})
+					div.style.backgroundColor = color;
+					body.style.backgroundColor = color;
+				}
 
-	})
+				if (scrollY > secondHeight) {
+					const hidden = Array.from(document.querySelectorAll('.hidden'));
+					let mapped = hidden.map(function(element){
+						element.classList.remove('hidden');
+						element.classList.remove('risen');
+						element.classList.add('shown');
+					})
+				} else if (scrollY < secondHeight){
+					const shown = Array.from(document.querySelectorAll('.shown'));
+					let mapped = shown.map(function(element){
+						element.classList.remove('shown');
+						element.classList.add('risen');
+						element.classList.add('hidden');
 
-	
 
-});
+					})
+					hidden = mapped;
+
+				}	
+
+				if (w >= 100){
+					body.style.backgroundColor = color;
+
+				} else if (w < 100) {
+					body.style.backgroundColor = 'white';
+
+				}
+
+			})
+
+})
+
+			
+
+
+			//console.log('w', w, ' = 100 * 1st%', firstPercentage, ' = 1stscroll', firstContainerScroll, '/ 1stheight', firstHeight);
+
+
+
+function setColorValue(percent,color, upperLimit, lowerLimit){
+	 let range = upperLimit - lowerLimit;
+	 let value = Math.floor((1 - percent) * color);
+	 if (value < lowerLimit){
+	 	value = lowerLimit;
+	 } else if (value > upperLimit) {
+	 	value = upperLimit;
+	 } 
+
+	return value
+}
 
 
 
