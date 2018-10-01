@@ -14,27 +14,64 @@ html{
 	height: 500vh;
 }
 
-#me-image{
+.settled{
+	width: 0;
+}
+
+.half-screen{
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(226, 230, 255, 0.5);
+	animation-duration: 1s;
+}
+
+.position-ab{
+	position: absolute;
+	top: 10vh;
+}
+
+.position-rel{
+	position: relative;
 }
 
 .info-boxes {
+
 	height: 500px;
-	width: 500px;
+	width: 40vw;
 	margin: 10px;
 	background-color: white;
-	animation-duration: 1s;
 	animation-timing-function: ease-in-out;
+	position: absolute;
+	top: 10vh;
+}
+
+#me-image{
+	right: 5vw;
+
+}
+
+#second-text{
+	right: 0;
+	width: 10vw;
 }
 
 .shown {
+	/*position: static;*/
 	animation-name: dropin;
+	animation-duration: 1s;
+
 }
 
 .open{
+	width: 50vw;
 	animation-name: open;
 }
 
+
 .close{
+	width: 0vw;
 	animation-name: close;
 }
 
@@ -44,6 +81,8 @@ html{
 
 .risen {
 	animation-name: riseout;
+	animation-duration: 0.1s;
+
 }
 
 @keyframes dropin {

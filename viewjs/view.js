@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 	const div = document.getElementById('test');
 	const body = document.querySelector('body');
 	const split = document.getElementById('split-screen');
+	const half = document.getElementsByClassName('half-screen')[0];
 
 	const height = window.innerHeight;
 	let scrollY = window.scrollY;
@@ -10,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 	const firstHeight = 900;
 	const secondHeight = 1800;
 	const thirdHeight = 2700;
-	const fourthHeight = 3600;
-	const fifthHeight = 4500;
+	// const fourthHeight = 3600;
+	// const fifthHeight = 4500;
 
 	//colors 	
 	let r = 242;
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 				scrollY = window.scrollY;
 				let w;
 
+				//dont reset on scrollup
 				if (scrollY < firstHeight) {
 					let firstContainerScroll = scrollY;
 					let firstPercentage = firstContainerScroll / firstHeight; 
@@ -61,13 +63,28 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 				}
 
 				if (scrollY > secondHeight) {
+					half.classList.remove('settled');
+					half.classList.remove('close');
+
+					half.classList.add('open');
+				//}
+				} else if (scrollY < secondHeight) {
+					if (half.classList.contains('open')){
+						half.classList.remove('open');
+						half.classList.add('close');
+					}
+
+				}
+
+				if (scrollY > thirdHeight) {
 					const hidden = Array.from(document.querySelectorAll('.hidden'));
 					let mapped = hidden.map(function(element){
 						element.classList.remove('hidden');
 						element.classList.remove('risen');
 						element.classList.add('shown');
 					})
-				} else if (scrollY < secondHeight){
+				//}
+				} else if (scrollY < thirdHeight){
 					const shown = Array.from(document.querySelectorAll('.shown'));
 					let mapped = shown.map(function(element){
 						element.classList.remove('shown');
@@ -76,9 +93,9 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 
 
 					})
-					hidden = mapped;
+				// 	hidden = mapped;
 
-				}	
+				 }	
 
 				if (w >= 100){
 					body.style.backgroundColor = color;
