@@ -2,17 +2,17 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 
 	const div = document.getElementById('test');
 	const body = document.querySelector('body');
-	const split = document.getElementById('split-screen');
+	const text = document.querySelector('#text');
 	const half = document.getElementsByClassName('half-screen')[0];
+
+
 
 	const height = window.innerHeight;
 	let scrollY = window.scrollY;
 
-	const firstHeight = 900;
-	const secondHeight = 1800;
-	const thirdHeight = 2700;
-	// const fourthHeight = 3600;
-	// const fifthHeight = 4500;
+	const firstHeight = 700;
+	const secondHeight = 1400;
+	const thirdHeight = 2100;
 
 	//colors 	
 	let r = 242;
@@ -27,92 +27,86 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 	let secondContainer = secondHeight - firstHeight;
 	let thirdContainer = thirdHeight - secondHeight;
 
+	window.addEventListener('scroll', function(s) {
+		scrollY = window.scrollY;
+		let w;
+
+		//dont reset on scrollup
+		if (scrollY < firstHeight) {
+			let firstContainerScroll = scrollY;
+			let firstPercentage = firstContainerScroll / firstHeight; 
+			console.log(firstContainerScroll, firstHeight, firstPercentage)
+
+			w = 100 * firstPercentage;
+			div.style.width = w + 'vw';
+		}
+
+		if (scrollY > firstHeight) {
+			let secondScrollHeight = scrollY - firstHeight;
+			let secondPercentage = secondScrollHeight / secondHeight;
+			
+			//what percent ahead of first height are we of 
+			r = setColorValue(secondPercentage, r, 242, 10); //10
+			g = setColorValue(secondPercentage, g, 243, 18); //18
+			b = setColorValue(secondPercentage, b, 255, 71); // 71;
+			color = `rgba(${r}, ${g}, ${b}, ${a}`;
+
+			div.style.backgroundColor = color;
+			body.style.backgroundColor = color;
+		}
 
 
-	document.addEventListener('mouseenter', function(me){
-	})
+
+		if (scrollY > secondHeight) {
+			half.classList.remove('settled');
+			half.classList.remove('close');
+			half.classList.add('open');
+
+		//}
+		} else if (scrollY < secondHeight) {
+			if (half.classList.contains('open')){
+				half.classList.remove('open');
+				half.classList.add('close');
 
 
+			}
 
-			window.addEventListener('scroll', function(s) {
-				scrollY = window.scrollY;
-				let w;
+		}
 
-				//dont reset on scrollup
-				if (scrollY < firstHeight) {
-					let firstContainerScroll = scrollY;
-					let firstPercentage = firstContainerScroll / firstHeight; 
+		if (scrollY > thirdHeight) {
+			const hidden = Array.from(document.querySelectorAll('.hidden'));
+			let mapped = hidden.map(function(element){
+				element.classList.remove('hidden');
+				element.classList.remove('risen');
+				element.classList.add('shown');
+			})
+		//}
+		} else if (scrollY < thirdHeight){
+			const shown = Array.from(document.querySelectorAll('.shown'));
+			let mapped = shown.map(function(element){
+				element.classList.remove('shown');
+				element.classList.add('risen');
+				element.classList.add('hidden');
 
-					w = 100 * firstPercentage;
-					div.style.width = w + 'vw';
-				}
-
-				if (scrollY > firstHeight) {
-					let secondScrollHeight = scrollY - firstHeight;
-					let secondPercentage = secondScrollHeight / secondHeight;
-					
-					//what percent ahead of first height are we of 
-					r = setColorValue(secondPercentage, r, 242, 10); //10
-					g = setColorValue(secondPercentage, g, 243, 18); //18
-					b = setColorValue(secondPercentage, b, 255, 71); // 71;
-					color = `rgba(${r}, ${g}, ${b}, ${a}`;
-
-
-					div.style.backgroundColor = color;
-					body.style.backgroundColor = color;
-				}
-
-				if (scrollY > secondHeight) {
-					half.classList.remove('settled');
-					half.classList.remove('close');
-
-					half.classList.add('open');
-				//}
-				} else if (scrollY < secondHeight) {
-					if (half.classList.contains('open')){
-						half.classList.remove('open');
-						half.classList.add('close');
-					}
-
-				}
-
-				if (scrollY > thirdHeight) {
-					const hidden = Array.from(document.querySelectorAll('.hidden'));
-					let mapped = hidden.map(function(element){
-						element.classList.remove('hidden');
-						element.classList.remove('risen');
-						element.classList.add('shown');
-					})
-				//}
-				} else if (scrollY < thirdHeight){
-					const shown = Array.from(document.querySelectorAll('.shown'));
-					let mapped = shown.map(function(element){
-						element.classList.remove('shown');
-						element.classList.add('risen');
-						element.classList.add('hidden');
-
-
-					})
-				// 	hidden = mapped;
-
-				 }	
-
-				if (w >= 100){
-					body.style.backgroundColor = color;
-
-				} else if (w < 100) {
-					body.style.backgroundColor = 'white';
-
-				}
 
 			})
+		// 	hidden = mapped;
+
+		 }	
+
+		if (w >= 100){
+			body.style.backgroundColor = color;
+
+		} else if (w < 100) {
+			body.style.backgroundColor = 'white';
+
+		}
+
+	})
 
 })
 
-			
 
-
-			//console.log('w', w, ' = 100 * 1st%', firstPercentage, ' = 1stscroll', firstContainerScroll, '/ 1stheight', firstHeight);
 
 
 
@@ -127,6 +121,41 @@ function setColorValue(percent,color, upperLimit, lowerLimit){
 
 	return value
 }
+
+	const hello = "Hello. I'm Andrea. "
+	var interval = 0;
+	var numOfDivs = hello.length;
+	var divArray = document.getElementsByClassName("square");
+
+
+// typing animation
+function populate() {
+	for ( let i = 1; i <= numOfDivs; i++){
+		var newDiv = document.createElement('div');
+		newDiv.classList.add("square");
+    	text.appendChild(newDiv);
+
+	}
+}
+
+	var intervalFunction = setInterval(function(){
+	  let previous = interval - 1;
+
+	  if (previous >= 0 && divArray[interval]){
+	    divArray[previous].innerHTML = hello[previous];
+	  } 
+	   interval++;
+
+	     if (interval == numOfDivs) {
+  			clearInterval(intervalFunction);
+  			divArray[previous + 1].classList.add("border-bottom");
+  			divArray[previous + 1].classList.add("blink");
+
+ 		 }
+	}, 50)
+
+ 
+
 
 
 

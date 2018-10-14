@@ -2,31 +2,74 @@
 <html>
 <head>
 	<title>Andrea McKenzie</title>
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Fahkwang" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/reset.css"></link>
 	<link rel="stylesheet" type="text/css" href="css/main.css"></link>
 </head>
-<body>
+<body onload="populate()">
+
 	<div id="test">
-		<div class="container">	
-		</div>
 		<div id="split-screen">
-			<div class="hidden info-boxes" id="me-image">
-				<div id="second-text">Morum Ipsum</div>
-			</div>
+			<!-- How to greet people? With that text creation header? And the split would just cover that? -->
 
 			<div class="half-screen settled">
 
+			<div class="hidden info-boxes" id="box">
 
-				<div class="hidden info-boxes" id="box">
+					<div id="first-text">
+						<h3>Hello, I'm Andrea McKenzie</h3>  
+						<h3>I am a full stack developer and UX/UI specialist.</h3>
+						<h3>Keep scrolling to see my <a href="#projects"><strong>projects</strong></a></h3>
+					</div>
+				</div> 
+			</div>
 
-					<div id="first-text">Lorum Ipsum</div>
+			<div class="hidden info-boxes">
+					<div id="syncrony">
+						Syncrony
+					</div>
+				</div> 
+			</div>
+
+			<div class="hidden info-boxes">
+					<div id="urt">
+						union real time
+					</div>
 				</div> 
 			</div>
 			
 		</div>
 	</div>
-	<div id='stressor'></div>
+	<!-- three projects -->
+	<div id="projects">
+		<div class="hidden picture-box" id="syncrony">
+			
+		</div>
+	</div>
+	<div id="sidebar">
+ 		<ul>
+          <a href="https://github.com/SiouxsieAsylum" target="_blank"  rel="noopener noreferrer" >
+          	<li  id="github">
+          		<i class="fab fa-2x fa-github-square"></i>
+            </li>
+           </a>
+          <a href="https://www.linkedin.com/in/andrea-mckenzie" target="_blank"  rel="noopener noreferrer" >
+	          <li id="linkedin">
+	          	<i class="fab fa-2x fa-linkedin"></i>
+	          </li>
+          </a>
+          <a href="mailto:mckenzie.andrea.m@gmail.com?subject=Hey, Dre! Let's make magic!" target="_blank"  rel="noopener noreferrer" >
+	          <li id="gmail">
+	          	<i class="fas fa-2x fa-envelope-square"></i>
+	          </li>
+          </a>
+        </ul>
+	</div>
+	<div id='stressor'>
+		<h1 id="text"></h1>
+
+	</div>
 </body>
 <script type="text/javascript" src="viewjs/view.js"></script>
 </html>

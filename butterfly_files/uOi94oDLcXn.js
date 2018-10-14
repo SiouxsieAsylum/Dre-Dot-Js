@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["lSfxD"]); }
+
+__d("ReactComposerTagEventSproutContainer.react",["ExtensibleSproutsItemType","React","ReactComposerSproutsDefaultUIConfig","ReactComposerTaggerSproutContainer.react","ReactComposerTaggerType"],(function(a,b,c,d,e,f){"use strict";__p&&__p();var g;g=babelHelpers.inherits(a,b("React").PureComponent);g&&g.prototype;a.prototype.render=function(){return b("React").createElement(b("ReactComposerTaggerSproutContainer.react"),{uiConfig:this.props.uiConfig,taggerID:b("ReactComposerTaggerType").TAG_EVENT})};function a(){g.apply(this,arguments)}a.defaultProps={uiConfig:b("ReactComposerSproutsDefaultUIConfig")[b("ExtensibleSproutsItemType").TAG_EVENT]};e.exports=a}),null);
