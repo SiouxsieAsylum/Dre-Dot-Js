@@ -3,50 +3,45 @@
 <head>
 	<title>Andrea McKenzie</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Fahkwang" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Fahkwang|Fjalla+One" rel="stylesheet"> -->
 	<link rel="stylesheet" type="text/css" href="css/reset.css"></link>
 	<link rel="stylesheet" type="text/css" href="css/main.css"></link>
 </head>
 <body onload="populate()">
 
 	<div id="test">
-		<div id="split-screen">
-			<!-- How to greet people? With that text creation header? And the split would just cover that? -->
 
 			<div class="half-screen settled">
 
 			<div class="hidden info-boxes" id="box">
 
-					<div id="first-text">
-						<h3>Hello, I'm Andrea McKenzie</h3>  
-						<h3>I am a full stack developer and UX/UI specialist.</h3>
-						<h3>Keep scrolling to see my <a href="#projects"><strong>projects</strong></a></h3>
+					<div class="first-text">
+						<h1>Hello, I'm Andrea McKenzie</h3>  
+						<h2>I am a full stack developer with a focus on producing a smooth, enjoyable user experience.</h3>
+						<h3>These are my:</h3>
+						<h4 id="stage"></h4>
+						<!-- this will say different things based on the scroll height -->
+						<!-- Different colors based on scroll height -->
 					</div>
 				</div> 
 			</div>
+		<h2 class="white-text">
+			I am a: 
+		</h2>
+		<h4>Ruby Dev</h4> <!-- will float around the screen then center as you scroll -->
+		<h4>Rails Dev</h4>
+		<h4>SQL DB Manager</h4>
+		<h4>Javascript Dev</h4>
+		<h4>Front End Framework Enthusiest</h4>
+		<h4>Node Dev</h4>
+		<h4>Vuetiful Soul</h4>
+		<h4>Angular Engineer</h4>
+		<h4>Reduxive Reacter</h4>
 
-			<div class="hidden info-boxes">
-					<div id="syncrony">
-						Syncrony
-					</div>
-				</div> 
-			</div>
-
-			<div class="hidden info-boxes">
-					<div id="urt">
-						union real time
-					</div>
-				</div> 
-			</div>
-			
-		</div>
 	</div>
+			
 	<!-- three projects -->
-	<div id="projects">
-		<div class="hidden picture-box" id="syncrony">
-			
-		</div>
-	</div>
+
 	<div id="sidebar">
  		<ul>
           <a href="https://github.com/SiouxsieAsylum" target="_blank"  rel="noopener noreferrer" >
@@ -67,8 +62,23 @@
         </ul>
 	</div>
 	<div id='stressor'>
-		<h1 id="text"></h1>
+		<div class="text-wrapper">
+			<h1 id="text"></h1>
 
+
+		</div>
+		<div class="professional-container">
+			<div class="hidden-container">
+				<div class="hidden first" >
+					<h2>Union Real Time</h2>
+					<p>Union Real Time provides comprehensive financial analysis of the state of the self-storage industry. On this project I worked on expanding the coverage of one of their web scrapers, which draws pricing and demographical information from over 6000 sites and stores for further processing. Technologies touched: Python.</p>
+				</div>
+				<div class="hidden second">
+					<h2>Syntactx Technologies</h2>
+					<p>Syntactx research organization that prepares clinical trials for approval from the FDA. Syntactx Technologies builds the Electronic Data Capture software that the organization uses to conduct the trials. On this project I was a front-end developer building full features from arcitectural design to implementation to testing. Technologies touched: AngularJS, MongoDB, Git, SQLServer. </p>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 <script type="text/javascript" src="viewjs/view.js"></script>

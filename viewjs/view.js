@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 	const height = window.innerHeight;
 	let scrollY = window.scrollY;
 
-	const firstHeight = 700;
-	const secondHeight = 1400;
-	const thirdHeight = 2100;
+	const firstHeight = 600;
+	const secondHeight = 900;
+	const thirdHeight = 1200;
 
 	//colors 	
 	let r = 242;
@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 		if (scrollY < firstHeight) {
 			let firstContainerScroll = scrollY;
 			let firstPercentage = firstContainerScroll / firstHeight; 
-			console.log(firstContainerScroll, firstHeight, firstPercentage)
 
 			w = 100 * firstPercentage;
 			div.style.width = w + 'vw';
@@ -55,42 +54,46 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 			body.style.backgroundColor = color;
 		}
 
-
-
 		if (scrollY > secondHeight) {
+			test.style.position = 'absolute';
+			half.style.position = 'fixed';
 			half.classList.remove('settled');
 			half.classList.remove('close');
 			half.classList.add('open');
 
-		//}
 		} else if (scrollY < secondHeight) {
+			test.style.position = 'fixed';
 			if (half.classList.contains('open')){
 				half.classList.remove('open');
 				half.classList.add('close');
-
-
 			}
-
 		}
 
 		if (scrollY > thirdHeight) {
 			const hidden = Array.from(document.querySelectorAll('.hidden'));
-			let mapped = hidden.map(function(element){
-				element.classList.remove('hidden');
-				element.classList.remove('risen');
-				element.classList.add('shown');
-			})
-		//}
+			let index = 0;
+			let element = hidden[index];
+
+				var interval = setInterval(function(){
+					if (element) {
+						element.classList.remove('hidden');
+						element.classList.remove('risen');
+						element.classList.add('shown');
+						index++;
+						element = hidden[index];
+					} else {
+						clearInterval(interval);
+					}
+
+				}, 500)
+
 		} else if (scrollY < thirdHeight){
 			const shown = Array.from(document.querySelectorAll('.shown'));
 			let mapped = shown.map(function(element){
 				element.classList.remove('shown');
 				element.classList.add('risen');
 				element.classList.add('hidden');
-
-
 			})
-		// 	hidden = mapped;
 
 		 }	
 
@@ -145,7 +148,6 @@ function populate() {
 	    divArray[previous].innerHTML = hello[previous];
 	  } 
 	   interval++;
-
 	     if (interval == numOfDivs) {
   			clearInterval(intervalFunction);
   			divArray[previous + 1].classList.add("border-bottom");

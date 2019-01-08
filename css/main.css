@@ -9,19 +9,18 @@ html{
 	left: -10px;
 }
 
-#test h1, #test h2 {
-	width: 100vw;
-    text-align: center;
-    font-size: 40px;
-=    margin: 40px
+#split-screen{
+	display: flex;
+}
 
+.text-wrapper{
+	padding: 40vh 0 0 40vh;
 }
 
 #text{
 	font-family: 'Fahkwang', sans-serif;
 	height: 100vh;
-	width: 100vw;
-	padding: 40vh;
+	width: 100%;
 }
 
 
@@ -46,18 +45,18 @@ html{
 }
 
 #sidebar ul li i{
-	
+	transition: .5s;
 }
 
 #stressor {
 	position: relative;
-	height: 500vh;
+	height: 300vh;
 	z-index: -1;
 	background-size: cover;
 }
 
 .square{
-	height:3vh;
+	height: 3vh;
 	font-size: 3vh;
 	line-height: 0;
     display:inline-block;
@@ -78,20 +77,17 @@ html{
 	animation: blink 1s infinite ease-out;
 }
 
-.settled{
+.settled {
 	width: 0;
 }
 
 .half-screen{
-	height: 100vh;
-	position: absolute;
+	opacity: 0;
+	width: 100vw;
 	top: 0;
 	left: 0;
 	background-color: rgba(226, 230, 255, 0.5);
 	animation-duration: 1s;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 }
 
 .position-ab{
@@ -103,14 +99,38 @@ html{
 	position: relative;
 }
 
-.info-boxes {
-
-	height: 500px;
-	width: 40vw;
+.first-text {
 	color: white;
-	animation-timing-function: ease-in-out;
-	top: 10vh;
-	align-self: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-boxes {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.shown h2 {
+	padding-bottom: 20px;
+    font-size: 25px;
+}
+
+.professional-container {
+	position: fixed;
+	top: 75vh;
+	width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden-container{
+	display: flex;
+	justify-content: space-around;
+	color: white;
 }
 
 #me-image{
@@ -125,17 +145,19 @@ html{
 .shown {
 	animation-name: dropin;
 	animation-duration: 1s;
-
+	animation-timing-function: ease-in-out;
 }
 
 .open{
-	width: 50vw;
+	opacity: 1;
+	height: 50vh;
 	animation-name: open;
 }
 
 
 .close{
-	width: 0vw;
+	opacity: 0;
+	height: 0vh;
 	animation-name: close;
 }
 
@@ -148,7 +170,6 @@ html{
 	animation-duration: 0.1s;
 
 }
-
 @keyframes dropin {
 	0% {opacity: 0; transform: translateY(-50px)}
 	100%{opacity: 1; transform: translateY(0px);}
@@ -161,16 +182,31 @@ html{
 
 
 @keyframes open {
-	from {width: 0vw;}
-	to {width: 50vw;}
+	from {height: 0vh;}
+	to {height: 50vh;}
 }
 
 @keyframes close {
-	from {width: 50vw;}
-	to {width: 0vw;}
+	from {height: 50vh; opacity: 1;}
+	to {height: 0vh; opacity: 0;}
 }
 
 @keyframes blink {
 	from {opacity: 1;}
 	to {opacity: 0};
+}
+
+
+@media screen and (max-aspect-ratio: 1/1){
+	.first-text h1{
+		font-size: 5vh;
+	}
+
+	.stressor{
+		height: 200vh;
+	}
+
+	.text-wrapper{
+		padding: 30vh 0 0 20vh;
+	}
 }
