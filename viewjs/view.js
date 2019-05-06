@@ -130,7 +130,7 @@ function setColorValue(percent,color, upperLimit, lowerLimit){
 
 // typing animation
 function populate() {
-	for ( let i = 1; i <= numOfDivs; i++){
+	for ( let i = 0; i <= numOfDivs; i++){
 		var newDiv = document.createElement('div');
 		newDiv.classList.add("square");
     	text.appendChild(newDiv);
