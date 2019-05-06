@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 			let index = 0;
 			let element = hidden[index];
 
-				var interval = setInterval(function(){
+				let showInterval = setInterval(function(){
 					if (element) {
 						element.classList.remove('hidden');
 						element.classList.remove('risen');
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 						index++;
 						element = hidden[index];
 					} else {
-						clearInterval(interval);
+						clearInterval(showInterval);
 					}
 
 				}, 700)
@@ -123,27 +123,27 @@ function setColorValue(percent,color, upperLimit, lowerLimit){
 }
 
 	const hello = "Hello. I'm Andrea. "
-	var interval = 0;
-	var numOfDivs = hello.length;
-	var divArray = document.getElementsByClassName("square");
+	let interval = 1;
+	let numOfDivs = hello.length;
+	let divArray = document.getElementsByClassName("square");
 
 
 // typing animation
 function populate() {
-	for ( let i = 0; i <= numOfDivs; i++){
+	for (let i = 0; i <= numOfDivs; i++){
 		var newDiv = document.createElement('div');
 		newDiv.classList.add("square");
     	text.appendChild(newDiv);
-
 	}
 }
 
-	var intervalFunction = setInterval(function(){
+	const intervalFunction = setInterval(function(){
 	  let previous = interval - 1;
 
-	  if (previous >= 0 && divArray[interval]){
+	  if (previous >= 0){
 	    divArray[previous].innerHTML = hello[previous];
 	  } 
+
 	   interval++;
 	     if (interval == numOfDivs) {
   			clearInterval(intervalFunction);
@@ -151,6 +151,7 @@ function populate() {
   			divArray[previous + 1].classList.add("blink");
 
  		 }
+ 		 console.log(divArray[interval])
 	}, 50)
 
  
