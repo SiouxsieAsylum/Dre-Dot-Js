@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 						clearInterval(interval);
 					}
 
-				}, 500)
+				}, 700)
 
 		} else if (scrollY < thirdHeight){
 			const shown = Array.from(document.querySelectorAll('.shown'));
@@ -108,9 +108,6 @@ document.addEventListener('DOMContentLoaded', function (dom) {
 	})
 
 })
-
-
-
 
 
 function setColorValue(percent,color, upperLimit, lowerLimit){
